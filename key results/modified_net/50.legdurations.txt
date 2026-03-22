@@ -1,0 +1,12 @@
+pattern	0+	5+	10+	15+	20+	25+	30+	35+	40+	45+	50+	55+	60+
+edu---home	1	2	1	5	5	6	4	3	3	3	1	1	19
+edu---leisure	6	20	7	9	8	3	5	3	2	10	2	1	19
+home---edu	4	11	26	20	20	15	6	9	5	5	2	6	20
+home---hospital	38	24	20	7	3	4	0	1	1	0	0	0	1
+home---work	7	18	25	15	18	17	18	14	10	13	16	7	73
+leisure---home	6	4	8	4	7	3	3	5	5	6	5	2	37
+shopping---work	247	1	0	0	1	0	1	0	0	1	0	0	0
+work---home	6	18	10	16	14	12	17	17	13	13	10	7	98
+work---shopping	250	1	0	0	0	0	0	0	0	0	0	0	0
+
+average leg duration: 1804.1423796791444 seconds = 00:30:04
