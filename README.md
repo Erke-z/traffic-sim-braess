@@ -9,6 +9,6 @@ almaty.py is the python file that was used to create the population files (popul
 
 in key results you can find key results for both networks.
 
-in all_data.txt there is the link to Google Drive where you can find all of the folders that where used to create simulations, and output folders.
+in all_data.txt there is the link to Google Drive where you can find all of the folders that where used to create simulations, output folders and our research article.
 How to get the output folder by yourself (if you want): install MATSim, insert the file alma_config.xml from the desired folder (almatyy is for original network and final is for modified network); press "Start MATSim" and you will get the output file.
 How to run the viualization: install Via, insert network, event and plans files (extract from zip folders), load them and start the simulation.
