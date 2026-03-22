@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="global">
+		<param name="coordinateSystem" value="EPSG:32643" /> <!-- UTM 43N -->
+		<param name="insistingOnDeprecatedConfigVersion" value="false" />
+	</module>
+
+<module name="qsim">
+		<param name="startTime" value="00:00:00" />
+		<param name="endTime" value="30:00:00" />
+		<param name="flowCapacityFactor" value="0.003" />   <!-- decreased capacity because there are only 500 agents in simulation-->
+		<param name="storageCapacityFactor" value="0.03" />
+	</module>
+
+	<module name="network">
+		<param name="inputNetworkFile" value="network_final_combined.xml" />  <!-- or alma_ntwrk.xml for original network-->
+	</module>
+
+	<module name="plans">
+		<param name="inputPlansFile" value="population_500.xml" />
+	</module>
+
+	<module name="scoring"> <!--scoring parameters-->
+		<param name="learningRate" value="1.0" />
+		<param name="brainExpBeta" value="5.0" />
+
+		<parameterset type="scoringParameters">
+			<param name="lateArrival" value="-18" />
+			<param name="earlyDeparture" value="-0" />
+			<param name="performing" value="+6" />
+			<param name="waiting" value="-0" />
+
+			<parameterset type="modeParams">
+				<param name="mode" value="car"/>
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+			</parameterset>
+			<parameterset type="modeParams">
+				<param name="mode" value="pt"/>
+			</parameterset>
+			<parameterset type="modeParams">
+				<param name="mode" value="walk"/>
+			</parameterset>
+
+			<parameterset type="activityParams"> <!-- all activities-->
+				<param name="activityType"    value="home" /> 
+				<param name="priority"        value="1" />
+				<param name="typicalDuration" value="12:00:00" />
+				<param name="minimalDuration" value="08:00:00" />
+			</parameterset>
+			<parameterset type="activityParams">
+				<param name="activityType"            value="work" /> 
+				<param name="priority"        value="1" />
+				<param name="typicalDuration" value="08:00:00" />
+				<param name="minimalDuration" value="06:00:00" />
+			</parameterset>
+			<parameterset type="activityParams">
+				<param name="activityType"            value="shopping" />
+				<param name="priority"        value="1" />
+				<param name="typicalDuration" value="00:30:00" />
+				<param name="minimalDuration" value="00:05:00" />
+				<param name="openingTime"     value="07:00:00" />
+				<param name="latestStartTime" value="22:00:00" />
+				<param name="earliestEndTime" value="" />
+				<param name="closingTime"     value="23:00:00" />
+			</parameterset>
+			<parameterset type="activityParams">
+				<param name="activityType"    value="leisure" />
+				<param name="priority"        value="1" />
+				<param name="typicalDuration" value="02:00:00" />
+				<param name="minimalDuration" value="00:10:00" />
+				<param name="openingTime"     value="08:00:00" />
+				<param name="latestStartTime" value="23:00:00" />
+				<param name="earliestEndTime" value="" />
+				<param name="closingTime"     value="23:30:00" />
+			</parameterset>
+			<parameterset type="activityParams">
+                <param name="activityType"    value="edu" />
+                <param name="typicalDuration" value="06:00:00" />
+				<param name="minimalDuration" value="02:00:00" />
+            </parameterset>
+            <parameterset type="activityParams">
+                <param name="activityType"    value="hospital" />
+                <param name="typicalDuration" value="02:00:00" />
+				<param name="minimalDuration" value="00:10:00" />
+				<param name="openingTime"     value="06:00:00" />
+				<param name="latestStartTime" value="16:00:00" />
+				<param name="earliestEndTime" value="" />
+				<param name="closingTime"     value="22:00:00" />
+            </parameterset>
+		</parameterset>
+	</module>
+
+    <module name="timeAllocationMutator">
+	    <param name="mutationRange" value="900.0" /> <!-- agents can departure ±15 minutes earlier or later -->
+        <param name="mutationAffectsDuration" value="false" />
+    </module>
+
+	<module name="replanning">
+		<param name="maxAgentPlanMemorySize" value="4" /> <!-- 0 means unlimited -->
+
+		<parameterset type="strategysettings">
+			<param name="strategyName" value="BestScore"/>
+			<param name="weight" value="0.7"/>
+		</parameterset>
+
+		<parameterset type="strategysettings"> <!-- 20% of agents will change their rotes in each iteration-->
+			<param name="strategyName" value="ReRoute"/>
+			<param name="weight" value="0.2"/>
+		</parameterset>
+
+		<parameterset type="strategysettings">
+		    <param name="strategyName" value="TimeAllocationMutator"/>
+            <param name="weight" value="0.1"/>
+		</parameterset>
+	</module>
+
+	<module name="controler">
+		<param name="outputDirectory" value="output" />
+		<param name="firstIteration" value="0" />
+		<param name="lastIteration" value="50" /> <!--total 50 iterations-->
+		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
+	</module>
+
+</config>
