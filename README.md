@@ -1,7 +1,7 @@
 # traffic-sim-braess
 This is the repository for the project "Improving Almaty’s Transport Routes Based on Braess Paradox" by Yerzhan Yerkezhan and Danay Zhaniya
 
-The aim of the works is to find Braess Links in Almaty's road network. As a result of the research, parts of the Kozhamkulov and Shchepetkov Streets and Utegen Batyr Street were defined as Braess Links and were removed in the modified network. You can see their image at .png files.
+The aim of the works is to find Braess Links in Almaty's road network. As a result of the research, parts of the Kozhamkulov Street and Utegen Batyr and Shchepetkov Streets were defined as Braess Links and were removed in the modified network. You can see their image at .png files.
 
 alma_config.xml is the configuration file that was used for both modified and original networks. It was developed based on official MATSim example projects. We made up for our small population sample by modifying the MATSim configuration's capacity parameters. This ensures that our 500 agents encounter the typical bottleneck of Almaty by simulating the limitations of a densely populated city.
 
